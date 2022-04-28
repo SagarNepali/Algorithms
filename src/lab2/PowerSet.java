@@ -26,7 +26,7 @@ import java.util.*;
  */
 public class PowerSet {
 
-    static List<Set<Integer>> powerSet(List<Integer> list){
+    static public List<Set<Integer>> powerSet(List<Integer> list){
 
         List<Set<Integer>> p= new ArrayList<>();
         Set<Integer> s = new HashSet<>();

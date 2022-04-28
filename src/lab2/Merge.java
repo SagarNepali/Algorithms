@@ -16,7 +16,6 @@ public class Merge {
 
     static int [] merge(int [] arr1, int [] arr2){
         int size = arr1.length + arr2.length;
-
         int [] newArr = new int[size];
         int arr1Counter = 0, arr2Counter=0, i=0;
 
@@ -29,15 +28,12 @@ public class Merge {
                     arr2Counter++;
             }
         }
-
         while(arr1Counter < arr1.length){
             newArr[i++] = arr1[arr1Counter++];
         }
-
         while(arr2Counter < arr2.length){
             newArr[i++] = arr2[arr2Counter++];
         }
-
         return newArr;
 
     }

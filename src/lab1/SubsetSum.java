@@ -1,5 +1,10 @@
 package lab1;
 
+import lab2.PowerSet;
+
+import java.util.*;
+import java.util.stream.Collectors;
+
 /**
  * SubsetSum Problem: given a set S = {s0, s1,s2, …, sn-1}of positive integers and a
  * non-negative integer k, is there a subset T of S so that the sum of the integers in T equals k?
@@ -13,4 +18,22 @@ package lab1;
  *
  */
 public class SubsetSum {
+
+    public static Set subSetSum(Set s, int k){
+        List<Set<Integer>> powerSets = PowerSet.powerSet(new ArrayList<>(s));
+        for(Set<Integer> set : powerSets){
+            int sum = 0;
+            for(Integer i : set){
+                sum += i;
+            }
+            if(sum==k) return set;
+        }
+        return null;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(SubsetSum.subSetSum(new HashSet<>(Arrays.asList(1,3,9,4,8,5)),21));
+        System.out.println(SubsetSum.subSetSum(new HashSet<>(Arrays.asList(1,3,9)),5));
+        System.out.println(SubsetSum.subSetSum(new HashSet<>(Arrays.asList(1,3,9,4,8,5)),0));
+    }
 }
