@@ -11,7 +11,7 @@ import java.util.Arrays;
  * largest elements are pushed to the right.
  *
  */
-public class BubbleSort1 extends Sorter {
+public class BubbleSort2 extends Sorter {
 	
 	int[] arr;
 	public int[] sort(int[] array){
@@ -23,13 +23,12 @@ public class BubbleSort1 extends Sorter {
 	private void bubbleSort(){
 		
 		int len = arr.length;
-		boolean flag=true;
-		for(int i = 0; i < len && flag; ++i) {
-			flag=false;
-			for(int j = 0; j < len-1; ++j) {
+
+		for(int i = 0; i < len ; ++i) {
+			for(int j = 0; j < len-i-1; ++j) {
 				if(arr[j]> arr[j+1]){
 					swap(j,j+1);
-					flag=true;
+
 				}
 			}
 		}
@@ -44,7 +43,7 @@ public class BubbleSort1 extends Sorter {
 	}
 	public static void main(String[] args){
 		int[] test = {21,13,1,-22, 51, 5, 18};
-		BubbleSort1 bs = new BubbleSort1();
+		BubbleSort2 bs = new BubbleSort2();
 		
 		System.out.println(Arrays.toString(bs.sort(test)));
 		System.out.println(Arrays.toString(bs.sort(new int[]{55,44,33,22,11,10,-1})));
