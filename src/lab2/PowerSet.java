@@ -47,9 +47,31 @@ public class PowerSet {
         return p;
     }
 
+    static public <T> List<Set<T>> genericPowerSet(List<T> list){
+
+        List<Set<T>> p= new ArrayList<>();
+        Set<T> s = new HashSet<>();
+        p.add(s);
+        Set<T> t;
+
+        while(!list.isEmpty()){
+            T f = list.remove(0);
+            int size = p.size();
+            for(int i=0; i < size; i++){
+                t = new HashSet<>();
+                t.add(f);
+                t.addAll(p.get(i));
+                p.add(t);
+            }
+        }
+
+        return p;
+    }
+
     public static void main(String[] args) {
 
         System.out.println(powerSet(Arrays.asList(new Integer[]{1,2,3})));
+        System.out.println(genericPowerSet(Arrays.asList(new Integer[]{1,2,3})));
     }
 
 }

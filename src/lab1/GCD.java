@@ -17,7 +17,7 @@ public class GCD {
     int gcd(int m, int n){
         int gcd = 0;
         int factor = 0;
-        for(int i =1; i < ( m > n ? m : n); i++){
+        for(int i =1; i < ( m > n ? m : n); i++){  //we can use smaller number as condition
             if(m % i ==0 && n % i ==0){
                 factor = i;
             }
@@ -27,10 +27,18 @@ public class GCD {
         return gcd;
     }
 
+    // The Euclidean Algorithm
+    public static int computegcd(int m, int n){
+        if(n==0) return m;;
+        return computegcd(n, m%n);
+    }
+
     public static void main(String[] args) {
         GCD gcd = new GCD();
         System.out.println("GCD 7,9 is : "+gcd.gcd(7,9));
         System.out.println("GCD 12,42 is : "+gcd.gcd(12,42));
 
+        System.out.println("Recursion 7,9 is: "+computegcd(7,9));
+        System.out.println("Recursion 12,42 is : "+computegcd(12,42));
     }
 }
