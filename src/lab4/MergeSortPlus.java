@@ -32,12 +32,14 @@ public class MergeSortPlus extends Sorter {
     }
 
     private void insertionSort(int []anArray,int lower,int upper){
+        if(lower >= upper) return ;
+
         int temp = 0;
         int j = 0;
         for(int i = lower+1; i <=upper; ++i) {
             temp = anArray[i];
             j=i;
-            while(j>0 && temp < anArray[j-1]){
+            while(j > lower && temp < anArray[j-1]){
                 anArray[j] = anArray[j-1];
                 j--;
             }

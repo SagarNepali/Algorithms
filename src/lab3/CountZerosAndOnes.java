@@ -2,6 +2,20 @@ package lab3;
 
 import java.util.Arrays;
 
+/**
+ * You are given a length-n array A consisting of 0s and 1s,
+ * arranged in sorted order. Give an Little-o(n) algorithm that counts the total number of
+ * 0s and 1s in the array. Your algorithm may not make use of auxiliary storage such as
+ * arrays or hashtables (more precisely, the only additional space used, beyond the given
+ * array, is O(1)). Explain why your algorithm runs in Little-o(n) time.
+ */
+
+/**
+ *
+ * Theta(n) is not little-oh(n)
+ * log(n) is little-oh(n)
+ *
+ */
 public class CountZerosAndOnes {
 
     /* Return count of zero and one in a array */
