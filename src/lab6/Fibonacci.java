@@ -45,15 +45,17 @@ public class Fibonacci {
     static int dpFib(int n){
         if(n<0) return -1;
         table = new int[n+1];
-        for(int i=0;i<table.length;i++){
+        for(int i=0; i < table.length; i++){
             table[i] = -1;
         }
         return recursiveDpFib(n);
     }
 
+    /* O(n+1) or O(n) because there are n self calls,
+    * each self-call tries to compute F_1 for some i < n   */
     private static int recursiveDpFib(int n) {
-        System.out.println("DP N: "+n);
         if(table[n]==-1){
+            System.out.println("DP N: "+n);
             if(n==0 || n== 1) {
                 table[n] = n;
                 return table[n];
