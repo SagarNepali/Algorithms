@@ -1,5 +1,7 @@
 package lab10;
 
+import java.util.*;
+
 /**
  * (Interview Question) Devise a dynamic programming solution for the following problem:
  * Given a positive integer n, find the least number of perfect square numbers which sum to n.
@@ -11,32 +13,47 @@ package lab10;
  */
 public class LeastPerfectSquares {
 
-    int[] findPerfectSquares(int n){
-        int [] squares = new int [n/2];
+    static Map findPerfectSquares(int n){
+        Map<Integer,Integer> squares = new HashMap();
 
-        double sq = 0;
+        int sq = 0;
 
-        for(int i=1; i<squares.length ; i++){
-            sq =(int) Math.sqrt(i);
-
-            if(sq - Math.floor(sq)==0) squares[i] = (int) sq;
+        for(int i=1;  i * i <= n ; i++){
+            sq = i * i;
+            if(sq <= n) squares.put(i,sq) ;
         }
 
         return squares;
     }
 
-    int least(int n){
-        int sum = 0;
+    static int least(int n){
 
-        for(int i: findPerfectSquares(n)){
+        if(n<4) return findPerfectSquares(n).values().contains(n) ? n : 0;
 
+        int dp[] = new int[n+1];
 
+        for(int i = 1 ; i<=n; i++){
+            dp[i] = i;
+            for(int j =1; j *j <=n; j++){
+                int sq = j * j;
 
+                if(sq <= i) {
+                    dp[i] = Math.min( dp[i], (dp[i-sq]+1) );
+                }
+
+            }
         }
-        return 1;
+
+
+        return dp[n];
     }
 
     public static void main(String[] args) {
 
+        System.out.println(least(3));
+        System.out.println(least(4));
+        System.out.println(least(10));
+        System.out.println(least(9));
+        System.out.println(least(21));
     }
 }
