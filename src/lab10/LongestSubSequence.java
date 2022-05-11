@@ -19,13 +19,13 @@ public class LongestSubSequence {
 
         int D[][] = new int[n+1][m+1]; //+1 for "" empty string; s1= row; s2=column
 
-        for(int i=0; i<n; i++){
-            for(int j=0; j<m; j++){
-                 if(s1.charAt(i) == s2.charAt(j)){
-                    D[i+1][j+1] = D[i][j] + 1;
+        for(int i=1; i<= n; i++){
+            for(int j=1; j<=m; j++){
+                 if(s1.charAt(n-i) == s2.charAt(m-j)){
+                    D[i][j]= D[i-1][j-1] + 1;
                 }else{
-                    D[i+1][j+1] = Math.max(D[i][j+1]
-                            ,D[i+1][j]);
+                    D[i][j] = Math.max(D[i][j-1]
+                            ,D[i-1][j]);
                 }
             }
         }
