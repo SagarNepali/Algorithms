@@ -7,28 +7,25 @@ package lab10;
  * Substring: the characters in a substring of S must occur contiguously in S.
  * Subsequence: the characters can be interspersed with gaps.
  * For example: Given two Strings - “regular” and “ruler”, your algorithm should output 4.
- *
+ * https://leetcode.com/problems/longest-common-subsequence/discuss/351689/JavaPython-3-Two-DP-codes-of-O(mn)-and-O(min(m-n))-spaces-w-picture-and-analysis
  */
 public class LongestSubSequence {
 
     static int iterativeLCS(String s1, String s2){
 
-        int n = s1.length()+1 ;
-        int m = s2.length()+1;
-
-        int D[][] = new int[n][m]; //+1 for "" empty string; s1= row; s2=column
+        int n = s1.length() ;
+        int m = s2.length();
 
 
-        for(int i=0; i < n; i++) D[i][0] = i; //initializing first row as the length of substring S1
-        for(int j=0; j< m; j++) D[0][j] = j; //initializing first column as the length of substring S2
+        int D[][] = new int[n+1][m+1]; //+1 for "" empty string; s1= row; s2=column
 
-        for(int i=0; i< n; i++){
-            for(int j=0; j< m; j++){
-                if(s1.charAt(i) == s2.charAt(j)){
-                    D[i][j] = D[i-1][j-1] + 1;
+        for(int i=0; i<n; i++){
+            for(int j=0; j<m; j++){
+                 if(s1.charAt(i) == s2.charAt(j)){
+                    D[i+1][j+1] = D[i][j] + 1;
                 }else{
-                    D[i][j] = Math.max(D[i-1][j]
-                            ,D[i-1][j-1]);
+                    D[i+1][j+1] = Math.max(D[i][j+1]
+                            ,D[i+1][j]);
                 }
             }
         }
@@ -36,6 +33,7 @@ public class LongestSubSequence {
     }
 
     public static void main(String[] args) {
-        System.out.println(iterativeLCS("abc","ac"));
+        System.out.println("LCS of abc and ac is : "+iterativeLCS("abc","ac"));
+        System.out.println("LCS of abc and ac is : "+iterativeLCS("regular","ruler"));
     }
 }
